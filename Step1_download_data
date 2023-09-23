@@ -1,0 +1,20 @@
+#先登录231工作站：
+#外网166.111.152.101:11131；内网192.168.1.231:22
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#利用 linuxnd 下载诺禾致源的测序数据
+#登录
+/data/user/liulongping/softwares/linuxnd login -u <公司发的登录账号> -p 
+#输入公司发的登录密码
+#查看登录状态
+/data/user/liulongping/softwares/linuxnd status
+#将数据下载到本地
+/data/user/liulongping/softwares/linuxnd cp -d oss://<公司发的数据路径> <本地下载地址>
+#示例如：
+/data/user/liulongping/softwares/linuxnd cp -d oss://CP2020030400009/H101SC22062101/RSSQ00504/X101SC22062101-Z01/X101SC22062101-Z01-J426/ /workstation/liulongping/data/20230810_ZYN
+
+#----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#将231上的数据传输到A集群
+#示例如：
+scp -r /workstation/liulongping/data/20230810_ZYN/X101SC22062101-Z01-J426/00.CleanData wangjb@101.6.121.63:/BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810
+#可以传输cleandata,也可以传输rawdata
