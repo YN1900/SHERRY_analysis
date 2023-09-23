@@ -1,0 +1,30 @@
+#关于数据存放位置的说明
+
+#所有数据都在 A 集群 /BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/ 路径下
+
+#测序数据按照日期分类
+#以 20230728 目录为例
+#目录下是原始的 cleandata 数据
+#子目录 trimmed 中是用 cutadapt 去除接头后的数据，用trim之后的数据产生的结果全部存放在 Outputs 子目录下
+#trimmed 目录的结构基本如下：
+#|--samp1
+#|--samp2
+#|--...
+#|--Outputs
+#|  |--Hisat_results（存放 Hisat2 产生的.sam文件）
+#|  |  |--samp1.sam
+#|  |  |--samp2.sam
+#|  |  |--...
+#|  |  |--samtools_results（存放所有 bam 相关文件）
+#|  |  |  |--samp1.bam
+#|  |  |  |--samp1.sorted.bam
+#|  |  |  |--samp1.sorted.bam.bai
+#|  |  |  |--...
+#|  |  |--rnaseq_results（存放 Qualimap 结果）
+#|  |  |--rseqc_results（存放 RseQC 结果）
+#|  |--Quant_results（存放 Salmon 结果）
+
+#GenomeData 目录按照物种分类存放所有参考基因组文件以及索引文件（Hisat_index；Salmon_index）
+#MyScripts 目录存放示例脚本文件
+#software 存放下载的软件
+#outputs 存放一些集中统计的结果，如detected gene number、gene body coverage等
