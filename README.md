@@ -1,1 +1,3 @@
-# SHERRY_analysis
+# RNAseq_analysis
+
+analysis pipeline for RNA-seq data 
