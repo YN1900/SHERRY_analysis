@@ -1,1 +1,25 @@
 #使用Hisat2进行序列比对
+
+#在进行序列比对之前需要构建索引
+
+#已经构建好的鼠基因组索引文件位置为：/Share/home/wangjb/haoming/Genome/Mus/hisat2/Mus_musculus_hisat2
+#人的基因组索引文件可以之间在官网下下载：http://daehwankimlab.github.io/hisat2/download/
+#官网上关于不同版本索引文件的说明：
+#  genome: HISAT2 index for reference
+#  genome_snp: HISAT2 Graph index for reference plus SNPs
+#  genome_tran: HISAT2 Graph index for reference plus transcripts
+#  genome_snp_tran: HISAT2 Graph index for reference plus SNPs and transcripts
+#使用genome版本即可
+#已经下载好的人 h38 基因组索引文件位置为：/BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/GenomeData/Human/Hisat_index/grch38
+
+
+#若需要自己构建
+#以人基因组索引构建为例：
+
+#1. 在ensemble上下载参考序列
+wget https://ftp.ensembl.org/pub/release-110/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+wget https://ftp.ensembl.org/pub/release-110/gtf/homo_sapiens/Homo_sapiens.GRCh38.110.chr.gtf.gz
+#2. 根据注释文件提取外显子和剪切位点信息，然后开始构建索引。脚本文件见script文件夹下hisat_index_build.sh
+#3. 需要注释文件的索引构建需要至少200G的内存；若内存不够，也可以只用参考基因组构建，若后面有软件分析需要用到注释信息，再提供注释文件也可以
+
+
