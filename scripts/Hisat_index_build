@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH -J hisat_index
+#SBATCH -p Acluster
+#SBATCH --output=%j.index.out
+#SBATCH --error=%.index.err
+#SBATCH --mem=200GB
+
+cd /BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/GenomeData/Human
+
+/Share/home/wangjb/usr/hisat2-2.1.0/hisat2_extract_splice_sites.py Homo_sapiens.GRCh38.110.chr.gtf > GRCh38.ss
+/Share/home/wangjb/usr/hisat2-2.1.0/hisat2_extract_exons.py Homo_sapiens.GRCh38.110.chr.gtf > GRCh38.exon
+
+/Share/home/wangjb/usr/hisat2-2.1.0/hisat2-build -p 4 --ss GRCh38.ss --exon GRCh38.exon Homo_sapiens.GRCh38.dna.primary_assembly.fa hg38_tran
