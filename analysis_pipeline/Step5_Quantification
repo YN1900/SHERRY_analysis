@@ -1,0 +1,15 @@
+#利用salmon软件进行定量
+#salmon可不经比对直接定量，可与Alignment步骤同时进行
+
+#salmon分析流程如下：
+
+#1. 提取转录本-基因对应关系。
+#  salmon默认对转录本进行定量，但是一个基因有多个转录本，因此需要把同一基因的各个转录本定量结果合并在一起，所以需要提取一个转录本-基因对应的信息文件。
+#  下载Homo_sapiens.GRCh38.cdna.all.fa.gz文件（https://ftp.ensembl.org/pub/release-110/fasta/homo_sapiens/cdna/）
+#  提取第一列（转录本ID）和 gene_symbol 列（基因名称），有些记录没有基因名称列，就提取gene ID列。脚本见script文件夹下trans_gene_map.sh
+
+#2. 构建索引
+#  索引可以在http://refgenomes.databio.org/上下载（试了之后，运行报错，因此自己构建index）
+#  官网上推荐使用 selective alignment 算法以及 decoy-aware transcriptome 索引
+#  decoy-aware转录组索引的方法为：将物种的整个基因组作为decoy，将基因序列放在转录组末尾即可，同时需要一个decoys.txt文件，声明基因序列的名字。
+#  decoy-aware转录组索引构建脚本见script文件夹下salmon_index_build.sh
