@@ -13,3 +13,7 @@
 #  官网上推荐使用 selective alignment 算法以及 decoy-aware transcriptome 索引
 #  decoy-aware转录组索引的方法为：将物种的整个基因组作为decoy，将基因序列放在转录组末尾即可，同时需要一个decoys.txt文件，声明基因序列的名字。
 #  decoy-aware转录组索引构建脚本见script文件夹下salmon_index_build.sh
+#  但是可能由于salmon版本的原因，构建 decoy-aware 时报错
+#  因此构建 nodecoy 索引：
+/Share/home/wangjb/usr/Salmon-0.8.2_linux_x86_64/bin/salmon index -t \
+  /BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/GenomeData/Human/Homo_sapiens.GRCh38.cdna.all.fa -i salmon_index_nodecoys
