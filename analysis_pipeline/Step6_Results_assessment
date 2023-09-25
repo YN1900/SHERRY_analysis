@@ -3,10 +3,9 @@
 #  也可以写个代码从err文件中提取这些内容
 
 #2. 利用samtools将sam文件转换为bam格式，并进行排序和索引，因为许多下游分析软件需要sorted的bam文件
-#  脚本文件见script文件夹下samtools.sh
 
 #3. qualimap获得exonic rate
-#  qualimap脚本文件见script文件夹下sam2bam.sh
+#  samtools和qualimap脚本文件见script文件夹下sam2bam.sh
 #  也可以写个代码从rnaseq_qc_results.txt文件中提取这些内容
 
 #4. 统计检测到的基因数量（salmon比对结果中TPM>1的基因认为表达）
