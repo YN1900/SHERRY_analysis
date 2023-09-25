@@ -17,3 +17,6 @@
 #  因此构建 nodecoy 索引：
 /Share/home/wangjb/usr/Salmon-0.8.2_linux_x86_64/bin/salmon index -t \
   /BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/GenomeData/Human/Homo_sapiens.GRCh38.cdna.all.fa -i salmon_index_nodecoys
+
+#3. 定量
+#  脚本见script文件夹下quant.sh
