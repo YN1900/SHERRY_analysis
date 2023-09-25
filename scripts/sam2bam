@@ -1,0 +1,30 @@
+#!/bin/bash
+#SBATCH -J sam2bam
+#SBATCH -p Acluster
+#SBATCH -n 40
+#SBATCH --output=%J_s2b.out
+#SBATCH --err=%J_s2b.err
+
+
+samp=(RNA_1ug_1 RNA_1ug_2 RNA_1ug_3 RNA_1ug_4 RNA_100ng_1 RNA_100ng_2 RNA_100ng_3 RNA_100ng_4 RNA_10ng_1 RNA_10ng_2 RNA_10ng_3 RNA_10ng_4 RNA_1ng_1 RNA_1ng_2 RNA_1ng_3 RNA_1ng_4 RNA_100pg_1 RNA_100pg_2 RNA_100pg_3 RNA_100pg_4 RNA_10pg_1 RNA_10pg_2 RNA_10pg_3 RNA_10pg_4 RNA_1pg_1 RNA_1pg_2 RNA_1pg_3 RNA_1pg_4)
+
+filepath=/BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/20230814/trimmed/Outputs/Hisat_results
+
+mkdir ${filepath}/samtools_results
+
+for i in ${samp[@]}
+do
+	samtools view -bS ${filepath}/${i}.sam > ${filepath}/samtools_results/${i}.bam
+done
+
+unset DISPLAY
+
+mkdir ${filepath}/rnaseq_results
+for m in ${samp[@]}
+do
+	/Share/home/wangjb/haoming/software/qualimap_v2.2.1/qualimap  rnaseq -bam ${filepath}/samtools_results/${m}.bam \
+		-gtf /BioII/wangjb/Backup/SequencingRuns/LLP_DATA/SHERRY/20230810/GenomeData/Human/Homo_sapiens.GRCh38.110.chr.gtf \
+		-outdir ${filepath}/rnaseq_results/${m}  -pe \
+		-outformat PDF:HTML \
+		--java-mem-size=20G
+done
