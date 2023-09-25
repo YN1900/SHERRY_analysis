@@ -1,0 +1,22 @@
+#通过一系列指标评估SHERRY方法
+#1. mapping rate, unique mapping rate, multimapping rate, no match rate, 总reads数在Hisat2运行后的.err文件中有
+#  也可以写个代码从err文件中提取这些内容
+
+#2. 利用samtools将sam文件转换为bam格式，并进行排序和索引，因为许多下游分析软件需要sorted的bam文件
+#  脚本文件见script文件夹下samtools.sh
+
+#3. qualimap获得exonic rate
+#  qualimap脚本文件见script文件夹下sam2bam.sh
+#  也可以写个代码从rnaseq_qc_results.txt文件中提取这些内容
+
+#4. 统计检测到的基因数量（salmon比对结果中TPM>1的基因认为表达）
+#  统计脚本见script文件夹下detected_gene_num.sh
+
+#5. RseQC计算gene body coverage
+#  RseQC运行代码见script文件夹下rseqc.sh
+#  RseQC运行结束后计算gene body coverage的uniformity，计算方法为gene body coverage曲线与x轴围成的面积的百分之一
+#  计算coverage uniformity的脚本见script文件夹下area.pl以及uniformity.sh
+
+#6. 数据可视化
+#  主要用ggplot
+#  绘图代码见script文件夹下visualization.r
