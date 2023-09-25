@@ -12,6 +12,11 @@
 #  统计脚本见script文件夹下detected_gene_num.sh
 
 #5. RseQC计算gene body coverage
+#  RseQC需要输入bed文件，当样本多且来自不同物种，在不同文件夹储存时，可以向RseQC输入储存sorted.bam文件位置的txt文件
+#  如果txt文件是用windows编辑的，先用vim的:set ff=unix将文件由dos格式转为unix格式，以防在读取line时出错
+#  sorted.bam文件和其对应的bam、sorted.bam.bai文件在同一文件夹下
+#  .bed文件可在USCS数据库下载，染色体名称有chr前缀；但是产生bam文件时用的注释是ensemble上下载的，染色体名称没有chr前缀；
+#  因此需要统一染色体名称：用sed 's/chr//'去掉前缀
 #  RseQC运行代码见script文件夹下rseqc.sh
 #  RseQC运行结束后计算gene body coverage的uniformity，计算方法为gene body coverage曲线与x轴围成的面积的百分之一
 #  计算coverage uniformity的脚本见script文件夹下area.pl以及uniformity.sh
