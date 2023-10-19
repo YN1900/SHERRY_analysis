@@ -23,4 +23,4 @@
 
 #6. 数据可视化
 #  主要用ggplot
-#  绘图代码见script文件夹下visualization.r
+#  绘图代码见script文件夹下file_processing.r 和 visualization.r
